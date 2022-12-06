@@ -59,9 +59,11 @@ def message ( client , feed_id , payload ):
     if feed_id=="relay2" and payload=="0":
         window.box6.setText("Off")
     if feed_id == "temperature" :
-        window.box7_update_plot_data(int(payload))
+        # print(payload)
+        window.box7_update_plot_data(int(float(payload)))
     if feed_id == "moisture":
-        window.box8_update_plot_data(int(payload))
+        # print(payload)
+        window.box8_update_plot_data(int(float(payload)))
 
 
 
@@ -187,7 +189,7 @@ class MainWindow(QMainWindow):
 
         self.hourbox7.append(self.hourbox7[-1] + 1)  # Add a new value 1 higher than the last.
         self.temperature.append(new_data)  # Add a new random value.
-
+        # print(self.box2_value-new_data)
         self.data_line_box7.setData(self.hourbox7, self.temperature)
 
     def box8_update_plot_data(self, new_data):
