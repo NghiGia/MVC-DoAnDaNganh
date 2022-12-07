@@ -130,8 +130,8 @@ class MainWindow(QMainWindow):
         self.box8.showGrid(x=True, y=True)
         self.data_line_box8 = self.box8.plot(self.hourbox8, self.moisture, pen=pen)
 
-        layout.addWidget(self.box7, 7, 1)
-        layout.addWidget(self.box8, 8,1)
+        layout.addWidget(self.box7, 7, 1,1,4)
+        layout.addWidget(self.box8, 8,1,1,4)
         # ===================================
 
         container = QWidget()
