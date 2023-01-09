@@ -1,4 +1,7 @@
-def box5_button_clicked(box5, clients):
+from PyQt5.QtCore import *
+import numpy as np
+
+def box5_button_clicked(box5, clients,QMouseEvent):
     print("Clicked")
     if box5.text() == "On":
         box5.setText("Off")
@@ -8,7 +11,7 @@ def box5_button_clicked(box5, clients):
         clients.publish("relay1", "1")
 
 
-def box6_button_clicked(box6, clients):
+def box6_button_clicked(box6, clients,QMouseEvent):
     print("Clicked")
     if box6.text() == "On":
         box6.setText("Off")
@@ -52,5 +55,16 @@ def box2_slider_pressed(self):
     print("Pressed!")
 
 
-def box2_slider_released(self):
+def box2_slider_released(self,clients,p):
+    clients.publish("threshold", p)
     print("Released")
+
+def AI(clients):
+    clients.publish("ai image", "detected")
+
+
+class VideoThread_box11(QThread):
+    change_pixmap_signal = pyqtSignal(np.ndarray)
+
+class VideoThread_box12(QThread):
+    change_pixmap_signal = pyqtSignal(np.ndarray)
